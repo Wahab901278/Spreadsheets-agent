@@ -1,0 +1,9 @@
+langgraph
+pandas
+numpy
+google-auth
+google-auth-oauthlib
+google-api-python-client
+google.auth-httplib2
+langchain
+langchain-ollama
