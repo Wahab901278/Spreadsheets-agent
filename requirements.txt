@@ -8,3 +8,6 @@ google.auth-httplib2
 langchain
 langchain-ollama
 python-dotenv
+flask
+flask-cors
+requests

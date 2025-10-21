@@ -67,7 +67,7 @@ def node_generate_insights(state: AgentState) -> Command[AgentState]:
     logger.info("Node 3: Generating insights with LLM...")
     try:
         analysis = state.get("analysis", {})
-        model = state.get("model", "llama2")
+        model = state.get("model", "qwen2.5:0.5b")
         base_url = state.get("base_url")
         context = state.get("context", "")
         
