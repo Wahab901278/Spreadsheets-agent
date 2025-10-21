@@ -4,6 +4,7 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 logger=logging.getLogger(__name__)
+
 def analyze_rows(rows: List[List[Any]]):
     if not rows:
         return {
