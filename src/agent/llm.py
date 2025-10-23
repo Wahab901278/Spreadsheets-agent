@@ -1,10 +1,11 @@
+import os
 from langchain_ollama import ChatOllama
 from langchain_core.messages import HumanMessage, SystemMessage
 
-def get_ollama(model,temperature=0.2,base_url=None):
-    model_name=model
-    url=base_url
-    return ChatOllama(model=model_name,temperature=temperature,base_url=url)
+def get_ollama(model, temperature=0.2, base_url=None):
+    model_name = model
+    url = base_url
+    return ChatOllama(model=model_name, temperature=temperature, base_url=url)
 
 
 def craft_prompt(analysis, context):
@@ -34,8 +35,11 @@ def craft_prompt(analysis, context):
 
     return [SystemMessage(content=sys), HumanMessage(content=combined_content)]
 
-def llm_generate_insights(analysis, model, base_url, context=""):
+def llm_generate_insights(analysis, model=None, base_url=None, context=""):
     try:
+        model = model or os.getenv("LLM_MODEL", "qwen2.5:0.5b")
+        base_url = base_url or os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+        
         llm = get_ollama(model=model, base_url=base_url)
         msgs = craft_prompt(analysis, context)
         resp = llm.invoke(msgs)
